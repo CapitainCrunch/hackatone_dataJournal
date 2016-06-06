@@ -1,0 +1,24 @@
+for item in items:
+            if 'item' in item.attrib.values():
+                for infos in item:
+                    if infos.attrib.values() == ['body']:
+                        for info in infos:
+                            if info.tag == 'a':
+                                m.name = info.text
+                                print('Name ---- ' + m.name)
+                            if info.attrib.values() == ['film-info']:
+                                a = 0
+                                for span in info:
+                                    a += 1
+                                    if a%2 == 0:
+                                        m.director = span.text
+                                        print('Dir ----' + m.director)
+                            #print(info.attrib.values())
+                            if info.attrib.values() == ['preview-text text-content']:
+                                for br in info:
+                                    a = (br.text)
+                                    b = (br.tail)
+                                    if a is None:
+                                        m.distributor = b
+                                    else:
+                                        m.distributor = a
